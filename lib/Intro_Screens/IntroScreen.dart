@@ -16,9 +16,10 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen> {
   PageController _controller = PageController();
   bool DoneButton = false;
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       // appBar: AppBar(title: Text("Link"),),
       body: Stack(children: [
         PageView(
@@ -41,38 +42,66 @@ class _IntroScreenState extends State<IntroScreen> {
               children: [
                 DoneButton
                     ? GestureDetector(
-                  onTap: () {
-                    _controller.previousPage(
-                        duration: Duration(milliseconds: 100),
-                        curve: Curves.bounceIn);
-                  },
-                  child: const Text("Previous",style: TextStyle(fontFamily: "Classic",fontSize: 17),),
-                )
+                        onTap: () {
+                          _controller.previousPage(
+                              duration: Duration(milliseconds: 100),
+                              curve: Curves.bounceIn);
+                        },
+                        child: const Text(
+                          "Prev",
+                          style: TextStyle(
+                              fontFamily: "Classic",
+                              fontSize: 17,
+                              color: Color(0xff1d1160)),
+                        ),
+                      )
                     : GestureDetector(
-                  onTap: () {
-                    _controller.jumpToPage(2);
-                  },
-                  child: const Text("Skip",style: TextStyle(fontFamily: "Classic",fontSize: 17),),
+                        onTap: () {
+                          _controller.jumpToPage(2);
+                        },
+                        child: const Text(
+                          "Skip",
+                          style: TextStyle(
+                              fontFamily: "Classic",
+                              fontSize: 17,
+                              color: Color(0xff1d1160)),
+                        ),
+                      ),
+                SmoothPageIndicator(
+                    controller: _controller,
+                    count: 3,
+                  effect: WormEffect(),
                 ),
-                SmoothPageIndicator(controller: _controller, count: 3),
                 DoneButton
                     ? GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomeScreen()));
-                  },
-                  child: const Text("Done",style: TextStyle(fontFamily: "Classic",fontSize: 17),),
-                )
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()));
+                        },
+                        child: const Text(
+                          "Done",
+                          style: TextStyle(
+                              fontFamily: "Classic",
+                              fontSize: 17,
+                              color: Color(0xff1d1160)),
+                        ),
+                      )
                     : GestureDetector(
-                  onTap: () {
-                    _controller.nextPage(
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.bounceIn);
-                  },
-                  child: const Text("Next",style: TextStyle(fontFamily: "Classic",fontSize: 17),),
-                )
+                        onTap: () {
+                          _controller.nextPage(
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.bounceIn);
+                        },
+                        child: const Text(
+                          "Next",
+                          style: TextStyle(
+                              fontFamily: "Classic",
+                              fontSize: 17,
+                              color: Color(0xff1d1160)),
+                        ),
+                      )
               ],
             ))
       ]),
