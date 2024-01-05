@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:link/Screens/Home.dart';
+import 'package:link/Screens/HomePage.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
@@ -87,7 +88,7 @@ class _OTPState extends State<OTP> {
                   backgroundColor: Colors.greenAccent,
                 ),
                 onPressed: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
                   print("Manual Verification: ${textEditingController.text}");
                 },
                 child: Text('Verify OTP',style: TextStyle(fontFamily: 'Classic',fontSize: 15,color: Colors.black),),
