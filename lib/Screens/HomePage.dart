@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:link/Screens/Home.dart';
-import 'package:video_player/video_player.dart';
+import 'package:link/Services/Chat/Chat_Services.dart';
+import 'package:link/auth/auth_service.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       backgroundColor: Color(0xffE6E6FA),
-      body: Stack(
+      body:
+
+      Stack(
         children: [
           Padding(
             padding: EdgeInsets.only(top: 40, right: 20, left: 20),
@@ -107,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+
     );
   }
 }

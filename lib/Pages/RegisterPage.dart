@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:link/Components/Button.dart';
+import 'package:link/auth/auth_service.dart';
 
 import '../Components/TestFiled.dart';
 
@@ -14,8 +15,25 @@ class RegisterPage extends StatelessWidget {
 
   final TextEditingController ConfirmPasswordController=TextEditingController();
 
-  void Register(){
-    print('Register');
+  void Register(BuildContext context) async{
+    final auth=AuthService();
+    if(PasswordController.text==ConfirmPasswordController.text){
+      try {
+        auth.signUpWithEmailPassword(
+            EmailController.text, PasswordController.text);
+      }
+      catch(e){
+        showDialog(context: context, builder: (context)=>AlertDialog(
+          title: Text(e.toString()),
+        ));
+      }
+    }
+    else{
+      showDialog(context: context, builder: (context)=>AlertDialog(
+        title: Text("Password don't match!"),
+      )
+      );
+    }
   }
 
   @override
@@ -40,7 +58,7 @@ class RegisterPage extends StatelessWidget {
           SizedBox(height: 20,),
           My_TextFiled(hintText:'Confirm Password', obscureText: true, controller: ConfirmPasswordController,),
           SizedBox(height: 20,),
-          Custom_Button(Button_Name: 'Register',onTap: Register),
+          Custom_Button(Button_Name: 'Register',onTap: ()=>Register(context)),
           SizedBox(height: 20,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

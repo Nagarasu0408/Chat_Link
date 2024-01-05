@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:link/Components/Button.dart';
+import 'package:link/auth/auth_service.dart';
 
 import '../Components/TestFiled.dart';
 
@@ -13,8 +14,16 @@ class LoginPage extends StatelessWidget {
 
 
 
-  void Login(){
-    print('Login');
+  void Login(BuildContext context) async{
+   final authService=AuthService();
+   try{
+     await authService.signInWithEmailPassword(EmailController.text, PasswordController.text);
+   }
+   catch(e){
+     showDialog(context: context, builder: (context)=>AlertDialog(
+       title: Text(e.toString()),
+     ));
+   }
   }
 
   @override
@@ -38,7 +47,7 @@ class LoginPage extends StatelessWidget {
           SizedBox(height: 20,),
           My_TextFiled(hintText:'Password', obscureText: true, controller: PasswordController,),
           SizedBox(height: 20,),
-          Custom_Button(Button_Name: 'Login',onTap: Login),
+          Custom_Button(Button_Name: 'Login',onTap: ()=>Login(context)),
           SizedBox(height: 20,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:link/auth/loginOrRegister.dart';
+import 'package:link/auth/auth_gate.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'Intro_Screen1.dart';
 import 'Intro_Screen2.dart';
@@ -78,7 +78,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginOrRegister()));
+                                  builder: (context) =>const AuthGate()));
                         },
                         child: const Text(
                           "Done",

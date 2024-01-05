@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:link/auth/auth_service.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
-
+  void SignOut() async{
+    final auth=AuthService();
+    auth.signOut();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -179,9 +183,7 @@ class Settings extends StatelessWidget {
                   ),
                   SizedBox(height: 20,),
                   InkWell(
-                    onTap: (){
-                      print('Taped');
-                    },
+                    onTap:SignOut,
                     child: const Padding(
                       padding: EdgeInsets.all(10.0),
                       child: Row(
