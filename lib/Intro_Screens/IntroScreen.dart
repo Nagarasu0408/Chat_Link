@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../Screens/HomePage.dart';
+import '../Screens/LoginScreen.dart';
 import 'Intro_Screen1.dart';
 import 'Intro_Screen2.dart';
 import 'Intro_Screen3.dart';
@@ -21,7 +20,8 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(title: Text("Link"),),
-      body: Stack(children: [
+      body: Stack(
+          children: [
         PageView(
           controller: _controller,
           onPageChanged: (index) {
@@ -29,7 +29,7 @@ class _IntroScreenState extends State<IntroScreen> {
               DoneButton = (index == 2);
             });
           },
-          children: [
+          children: const [
             Intro_Screen1(),
             Intro_Screen2(),
             Intro_Screen3(),
@@ -70,7 +70,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 SmoothPageIndicator(
                     controller: _controller,
                     count: 3,
-                  effect: WormEffect(),
+                  effect:const WormEffect(),
                 ),
                 DoneButton
                     ? GestureDetector(
@@ -78,7 +78,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => LoginScreen()));
                         },
                         child: const Text(
                           "Done",

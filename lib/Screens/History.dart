@@ -23,9 +23,36 @@ class _HistoryState extends State<History> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset("asset/Images/Logo.png",height:50,width: 60,),
-                    Text("Link", style: TextStyle(fontSize: 50, fontFamily: 'Classic'),),
+                    Image.asset("asset/Images/ChatImage.png",height:50,width: 60,),
+                    Text("Chat", style: TextStyle(fontSize: 40, fontFamily: 'Classic'),),
                   ],
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.all(20),
+                height: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black)
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextField(
+                    textAlign: TextAlign.start,
+                    textAlignVertical: TextAlignVertical.bottom,
+                    decoration: InputDecoration(
+                        enabled: true,
+                        disabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide.none,
+                        ),
+                        hintText: 'Search User...',
+                        hintStyle: TextStyle(fontSize: 18,color: Colors.black26,fontFamily: 'Classic'),
+                        suffixIcon: Icon(Icons.search,size: 35)
+                    ),
+                  ),
                 ),
               ),
               for(int i=0;i<20;i++)

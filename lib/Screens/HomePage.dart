@@ -79,7 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Container(
             alignment: const Alignment(0, 0.75),
-            child: OutlinedButton(
+            child:
+            OutlinedButton(
               style: OutlinedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0),

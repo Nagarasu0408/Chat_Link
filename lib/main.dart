@@ -25,35 +25,44 @@ class _LinkState extends State<Link> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 750,
-            child: AnimatedSplashScreen(
-              centered: true,
-              splash: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(height: 50,),
+            // SizedBox(  height: 100,),
+            // const SizedBox(
+            //
+            //   child:Text("Development",style: TextStyle(fontSize: 25,fontFamily: 'Classic',),),
+            // ),
+            SizedBox(
+              height: 700,
+              child: AnimatedSplashScreen(
+                centered: true,
+                splash: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset("asset/Images/ChatImage.png",fit: BoxFit.fill,height: 130,),
+                 SizedBox(width: 20,),
+                 const Text("Chat",style: TextStyle(fontSize: 45,fontFamily: 'Classic',),),
+                ],
+              ),
+                duration: 1500,
+                splashTransition: SplashTransition.scaleTransition,
+                nextScreen:const IntroScreen(),
+              ),
+            ),
+            const Column(
               children: [
-                Image.network("https://t4.ftcdn.net/jpg/01/00/76/57/360_F_100765796_hVO2AGkofuyqsiiPGd4rdEkjq1FaC11k.jpg",fit: BoxFit.fill,),
-               const Text("LINK",style: TextStyle(fontSize: 35,fontFamily: 'Classic',),),
+                Text("Powered By",style: TextStyle(fontFamily: 'Classic',fontWeight:FontWeight.w200,fontSize: 25),),
+                SizedBox(height: 15,),
+                Text("Play Kid",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,fontFamily: 'Classic'),)
               ],
-            ),
-              duration: 1500,
-              splashTransition: SplashTransition.scaleTransition,
-              nextScreen:const IntroScreen(),
-            ),
-          ),
-          Container(
-            child: const Column(
-              children: [
-                Text("Powered By",style: TextStyle(fontFamily: 'Classic',fontWeight:FontWeight.w200,fontSize: 17.5),),
-                Text("Play Kid",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,fontFamily: 'Classic'),)
-              ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
