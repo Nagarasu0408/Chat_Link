@@ -18,7 +18,7 @@ class _Intro_Screen3State extends State<Intro_Screen3> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.network(
-                "https://static.vecteezy.com/system/resources/previews/011/343/652/original/teenager-create-content-marketing-3d-character-illustration-png.png"),
+                "https://static.vecteezy.com/system/resources/previews/011/343/652/original/teenager-create-content-marketing-3d-character-illustration-png.png",),
             const Text(
               "Exchange Your Thoughts",
               style: TextStyle(

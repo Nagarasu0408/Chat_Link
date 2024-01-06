@@ -13,10 +13,10 @@ class Custom_Button extends StatelessWidget {
         width: 150,
         height: 60,
         alignment: Alignment.center,
-        decoration: BoxDecoration(color:Colors.grey.shade100,borderRadius:BorderRadius.circular(10)),
+        decoration: BoxDecoration(color:Colors.grey.shade100,borderRadius:BorderRadius.circular(10),border:Border.all(color: Colors.blueGrey.shade100),),
         margin: EdgeInsets.symmetric(horizontal: 25),
         padding: EdgeInsets.all(15.0),
-        child: Text(Button_Name),
+        child: Text(Button_Name,style: TextStyle(fontSize: 20,fontFamily: 'Classic'),),
       ),
     );
   }

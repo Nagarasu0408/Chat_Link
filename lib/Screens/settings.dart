@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:link/auth/auth_service.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
-  void SignOut() async{
-    final auth=AuthService();
+
+  void SignOut() async {
+    final auth = AuthService();
     auth.signOut();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-      Column(
+      body: Column(
         children: [
           SingleChildScrollView(
             child: Stack(
-              alignment: Alignment.topRight,
+              alignment: Alignment.centerLeft,
               children: [
                 SizedBox(
                   height: 400,
@@ -26,40 +28,79 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 35, right: 15),
+                    padding: EdgeInsets.only(top: 140, left: 10),
+                    child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white10),
+                            color: Colors.white.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(7)),
+                        child: Text(
+                          'User Name',
+                          style: TextStyle(fontSize: 25, fontFamily: 'Classic'),
+                        ))),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 270, left: 330),
                   child: IconButton(
                     isSelected: true,
                     onPressed: () {
                       print('Edit Button Click');
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.edit_outlined,
                       size: 30,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 320),
+                  padding: const EdgeInsets.only(top: 300),
                   child: Container(
-                    decoration: BoxDecoration(border:Border.all(color: Colors.white),color: Colors.white.withOpacity(0.5),),
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      color: Colors.white.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(7),
+                    ),
                     alignment: Alignment.center,
-                    child:  Row(
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Column(
+                        const Column(
                           children: [
-                            Text("2024",style: TextStyle(fontFamily: 'Classic',fontSize: 25),),
-                            Text('Following',style: TextStyle(fontFamily: 'Classic',fontSize: 20,color: Colors.black87),),
+                            Text(
+                              "2024",
+                              style: TextStyle(
+                                  fontFamily: 'Classic', fontSize: 25),
+                            ),
+                            Text(
+                              'Following',
+                              style: TextStyle(
+                                  fontFamily: 'Classic',
+                                  fontSize: 20,
+                                  color: Colors.black87),
+                            ),
                           ],
                         ),
                         Container(
                           height: 65,
-                          decoration: BoxDecoration(border:Border.all(color: Colors.black54) ),),
-                        Column(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black54)),
+                        ),
+                        const Column(
                           children: [
-                            Text("2020",style: TextStyle(fontFamily: 'Classic',fontSize: 25),),
-                            Text('Followers',style: TextStyle(fontFamily: 'Classic',fontSize: 20,color: Colors.black87),),
+                            Text(
+                              "2020",
+                              style: TextStyle(
+                                  fontFamily: 'Classic', fontSize: 25),
+                            ),
+                            Text(
+                              'Followers',
+                              style: TextStyle(
+                                  fontFamily: 'Classic',
+                                  fontSize: 20,
+                                  color: Colors.black87),
+                            ),
                           ],
                         ),
                       ],
@@ -75,9 +116,11 @@ class Settings extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 30,),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       print('Taped');
                     },
                     child: const Padding(
@@ -86,25 +129,47 @@ class Settings extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.chat_bubble_outline,size: 30,),
-                          SizedBox(width: 20,),
+                          Icon(
+                            Icons.chat_bubble_outline,
+                            size: 30,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Chat",style: TextStyle(fontSize: 20,fontFamily: 'Classic'),),
-                              Text("Modify Chat Settings",style: TextStyle(fontSize: 15,fontFamily: 'Classic',color: Colors.black54),),
+                              Text(
+                                "Chat",
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'Classic'),
+                              ),
+                              Text(
+                                "Modify Chat Settings",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Classic',
+                                    color: Colors.black54),
+                              ),
                             ],
                           ),
-                          SizedBox(width: 70,),
-                          Icon(Icons.arrow_forward_ios,size: 15,),
+                          SizedBox(
+                            width: 70,
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       print('Taped');
                     },
                     child: const Padding(
@@ -113,23 +178,41 @@ class Settings extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(Icons.privacy_tip_outlined,size: 30,),
+                          Icon(
+                            Icons.privacy_tip_outlined,
+                            size: 30,
+                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Privacy Policy",style: TextStyle(fontSize: 20,fontFamily: 'Classic'),),
-                              Text("Details About our Service",style: TextStyle(fontSize: 15,fontFamily: 'Classic',color: Colors.black54),),
+                              Text(
+                                "Privacy Policy",
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'Classic'),
+                              ),
+                              Text(
+                                "Details About our Service",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Classic',
+                                    color: Colors.black54),
+                              ),
                             ],
                           ),
-                          Icon(Icons.arrow_forward_ios,size: 15,),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       print('Taped');
                     },
                     child: const Padding(
@@ -138,25 +221,47 @@ class Settings extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.person_3_outlined,size: 30,),
-                          SizedBox(width: 20,),
+                          Icon(
+                            Icons.person_3_outlined,
+                            size: 30,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Profile",style: TextStyle(fontSize: 20,fontFamily: 'Classic'),),
-                              Text("Update Your Profile",style: TextStyle(fontSize: 15,fontFamily: 'Classic',color: Colors.black54),),
+                              Text(
+                                "Profile",
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'Classic'),
+                              ),
+                              Text(
+                                "Update Your Profile",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Classic',
+                                    color: Colors.black54),
+                              ),
                             ],
                           ),
-                          SizedBox(width: 70,),
-                          Icon(Icons.arrow_forward_ios,size: 15,),
+                          SizedBox(
+                            width: 70,
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       print('Taped');
                     },
                     child: const Padding(
@@ -164,51 +269,103 @@ class Settings extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.control_camera,size: 30,),
-                        SizedBox(width: 20,),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Settings",style: TextStyle(fontSize: 20,fontFamily: 'Classic'),),
-                            Text("Password and Security",style: TextStyle(fontSize: 15,fontFamily: 'Classic',color: Colors.black54),),
-                          ],
-                        ),
-                        SizedBox(width: 55,),
-                        Icon(Icons.arrow_forward_ios,size: 15,),
-                      ],
-                    ),
+                        children: [
+                          Icon(
+                            Icons.control_camera,
+                            size: 30,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Settings",
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'Classic'),
+                              ),
+                              Text(
+                                "Password and Security",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Classic',
+                                    color: Colors.black54),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 55,
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   InkWell(
-                    onTap:SignOut,
+                    onTap: SignOut,
                     child: const Padding(
                       padding: EdgeInsets.all(10.0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.logout,size: 30,),
-                          SizedBox(width: 20,),
+                          Icon(
+                            Icons.logout,
+                            size: 30,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Log out",style: TextStyle(fontSize: 20,fontFamily: 'Classic'),),
-                              Text("See you Later",style: TextStyle(fontSize: 15,fontFamily: 'Classic',color: Colors.black54),),
+                              Text(
+                                "Log out",
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'Classic'),
+                              ),
+                              Text(
+                                "See you Later",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Classic',
+                                    color: Colors.black54),
+                              ),
                             ],
                           ),
-                          SizedBox(width: 130,),
-                          Icon(Icons.arrow_forward_ios,size: 15,),
+                          SizedBox(
+                            width: 130,
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 40,),
-                  Container(child: Text('Version 1.0.0.5',style: TextStyle(fontSize: 16,fontFamily: 'Classic',color: Colors.black26),),),
-                  SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  const Text(
+                    'Version 1.0.0.5',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Classic',
+                        color: Colors.black26),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                 ],
               ),
             ),

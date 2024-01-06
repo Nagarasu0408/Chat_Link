@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:link/Demo/ChatPage.dart';
+import 'package:link/Demo/UserScreen.dart';
 import 'package:link/Screens/History.dart';
 import 'package:link/Screens/chat.dart';
 import 'package:link/Screens/settings.dart';
@@ -13,7 +15,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int index=0;
   final Screens=[
-    Chat(),
+    // Chat(),
+    UserScreen(),
     History(),
     Settings()
   ];

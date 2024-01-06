@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:link/Demo/UserScreen.dart';
+import 'package:link/Screens/Home.dart';
 import 'package:link/Screens/HomePage.dart';
 import 'package:link/auth/loginOrRegister.dart';
 
@@ -15,7 +16,7 @@ class AuthGate extends StatelessWidget {
         builder: (context,snapshot){
           if(snapshot.hasData){
             // return  HomeScreen();
-            return UserScreen();
+            return Home();
           }
           else{
             return  LoginOrRegister();

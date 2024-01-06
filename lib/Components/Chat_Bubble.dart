@@ -11,15 +11,34 @@ class ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: isCurrentUser ?
-        Colors.green:Colors.grey.shade500,
-        borderRadius: BorderRadius.circular(12),
+        color: isCurrentUser ? Colors.blue.shade100 : Colors.grey.shade100,
+        borderRadius: BorderRadius.circular(15),
+        
       ),
-      padding: EdgeInsets.all(16),
-      margin: EdgeInsets.symmetric(vertical: 5,horizontal: 25),
-      child: Text(
-        message,
-        style: TextStyle(color:Colors.black),
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+      child: Column(
+        children: [
+          Text(
+            message,
+            style: const TextStyle(
+              color: Colors.black,
+              fontFamily: 'Classic',
+            ),
+          ),
+          // Container(
+          //   alignment:
+          //       isCurrentUser ? Alignment.bottomRight : Alignment.bottomLeft,
+          //   child: const Text(
+          //     'hello',
+          //     style: TextStyle(
+          //       fontFamily: 'Classic',
+          //       fontSize: 8,
+          //       color: Colors.black38,
+          //     ),
+          //   ),
+          // ),
+        ],
       ),
     );
   }
