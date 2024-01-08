@@ -6,16 +6,48 @@ import 'package:link/Services/Chat/Chat_Services.dart';
 import 'package:link/auth/auth_service.dart';
 import 'UserTile.dart';
 
-class UserScreen extends StatelessWidget {
-  UserScreen({super.key});
+class UserScreen extends StatefulWidget {
+  const UserScreen({super.key});
 
+  @override
+  // ignore: library_private_types_in_public_api
+  _UserScreenState createState() => _UserScreenState();
+}
+
+class _UserScreenState extends State<UserScreen> {
   final ChatService _chatService = ChatService();
   final AuthService _authService = AuthService();
-  final TextEditingController _SearchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
+  List<Map<String, dynamic>> _users = [];
 
   void logout() {
     final auth = AuthService();
     auth.signOut();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsers();
+  }
+
+  void _loadUsers() {
+    _chatService.getUserStream().listen((List<Map<String, dynamic>> users) {
+      setState(() {
+        _users = users;
+      });
+    });
+  }
+
+  List<Map<String, dynamic>> _filterUsers(String query) {
+    return _users
+        .where((user) =>
+    user['email']
+        .toString()
+        .toLowerCase()
+        .contains(query.toLowerCase()) &&
+        user['email'] != _authService.getCurrentUser()!.email)
+        .toList();
   }
 
   @override
@@ -26,9 +58,16 @@ class UserScreen extends StatelessWidget {
           children: [
             const Logo(),
             Custom_SearchBar(
-                hintText: 'Search for message...',
-                controller: _SearchController),
-            Container(child: _buildUserList()),
+              hintText: 'Search for a user...',
+              controller: _searchController,
+              onChanged: (query) {
+                setState(() {
+                  // Update the user list based on the search query
+                  _users = _filterUsers(query);
+                });
+              },
+            ),
+            _buildUserList(),
           ],
         ),
       ),
@@ -36,56 +75,50 @@ class UserScreen extends StatelessWidget {
   }
 
   Widget _buildUserList() {
-    return StreamBuilder(
-      stream: _chatService.getUserStream(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Center(
-            child: Text(
-              "Error...",
-              style: TextStyle(
-                  fontSize: 20, fontFamily: 'Classic', color: Colors.black26),
-            ),
-          );
-        }
+    if (_users.isEmpty) {
+      return const Center(
+        child: Text(
+          "No users found",
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Classic',
+            color: Colors.black26,
+          ),
+        ),
+      );
+    }
 
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: Text(
-              "Loading...",
-              style: TextStyle(
-                  fontSize: 20, fontFamily: 'Classic', color: Colors.black26),
-            ),
-          );
-        }
-        return ListView(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          children: snapshot.data!
-              .map<Widget>((userData) => _buildUserListItem(userData, context))
-              .toList(),
-        );
-      },
+    return ListView(
+      physics:const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      children: _users
+          .map<Widget>((userData) => _buildUserListItem(userData, context))
+          .toList(),
     );
   }
 
   Widget _buildUserListItem(
       Map<String, dynamic> userData, BuildContext context) {
-    if (userData['email'] != _authService.getCurrentUser()!.email) {
+    if(userData["email"]!=_authService.getCurrentUser()!.email) {
       return UserTile(
         text: userData['email'],
         ontap: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ChatPage(
-                        receiverEmail: userData['email'],
-                        receiverID: userData['uid'],
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  ChatPage(
+                    receiverEmail: userData['email'],
+                    receiverID: userData['uid'],
+                  ),
+            ),
+          );
         },
       );
-    } else {
-      return Container();
     }
+    else
+      {
+        return Container();
+      }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class UserTile extends StatelessWidget {
   final String text;
@@ -18,38 +19,43 @@ class UserTile extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              alignment: Alignment.center,
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      "asset/Images/demopic.avif",
-                    ),
-                    fit: BoxFit.fill,
-                  )),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+            Row(
               children: [
-                Text(text,style:const TextStyle(fontFamily: 'Classic',fontSize: 15),),
-                const Text(
-                  "Last Seen 12:30 PM",
-                  style: TextStyle(
-                      fontSize: 11,
-                      fontFamily: 'Classic',
-                      color: Colors.black38),
+                Container(
+                  alignment: Alignment.center,
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      image: const DecorationImage(
+                        image: AssetImage(
+                          "asset/Images/demopic.avif",
+                        ),
+                        fit: BoxFit.fill,
+                      )),
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(text,style:const TextStyle(fontFamily: 'Classic',fontSize: 15),),
+                    const Text(
+                      "Last Seen 12:30 PM",
+                      style: TextStyle(
+                          fontSize: 11,
+                          fontFamily: 'Classic',
+                          color: Colors.black38),
+                    ),
+                  ],
                 ),
               ],
             ),
+
             const SizedBox(width: 35,),
             const Icon(Icons.arrow_forward_ios,size: 18,),
           ],

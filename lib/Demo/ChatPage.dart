@@ -33,7 +33,7 @@ class ChatPage extends StatelessWidget {
         SizedBox(
           height: 55,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconButton(
@@ -45,25 +45,23 @@ class ChatPage extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              const SizedBox(
-                width: 5,
-              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     alignment: Alignment.center,
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        image: const DecorationImage(
-                          image: NetworkImage(
-                            "https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?cs=srgb&dl=pexels-pixabay-461940.jpg&fm=jpg",
-                          ),
-                          fit: BoxFit.cover,
-                        )),
+                      borderRadius: BorderRadius.circular(50),
+                      image: const DecorationImage(
+                        image: NetworkImage(
+                          "https://5.imimg.com/data5/SELLER/Default/2022/1/BR/FV/JJ/135718437/new-product.jpeg",
+                        ),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     width: 15,
@@ -86,7 +84,12 @@ class ChatPage extends StatelessWidget {
                       ),
                     ],
                   ),
+
                 ],
+              ),
+              IconButton(icon: Icon(Icons.more_vert,size: 25,),onPressed:(){
+                print("More Info");
+              },
               ),
             ],
           ),
@@ -100,6 +103,20 @@ class ChatPage extends StatelessWidget {
             border: Border.all(color: Colors.black12),
           ),
         ),
+        // Container(
+        //   height: MediaQuery.of(context).size.height - 202,
+        //   decoration: const BoxDecoration(
+        //     image: DecorationImage(
+        //       image: NetworkImage(
+        //           'https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/m/b/g/small-anushka-sen-poster-100-anushka-sen-poster-multicolor-photo-original-imagg9qnfymxw34t.jpeg?q=90'),
+        //       opacity: .3,
+        //       fit: BoxFit.cover,
+        //     ),
+        //   ),
+        //   child: Expanded(
+        //     child: _buildMessageList(),
+        //   ),
+        // ),
         Expanded(
           child: _buildMessageList(),
         ),

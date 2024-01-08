@@ -1,9 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:link/auth/auth_service.dart';
 
+import '../SettingsPages/Privacy Policy.dart';
+
 class Settings extends StatelessWidget {
-  const Settings({super.key});
+   Settings({super.key});
+
+  final user=FirebaseAuth.instance.currentUser!;
+
 
   void SignOut() async {
     final auth = AuthService();
@@ -21,24 +27,27 @@ class Settings extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 400,
-                  width: 400,
+                  width: MediaQuery.of(context).size.width,
                   child: Image.network(
                     "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTB8OTQ1MjQ5NHx8ZW58MHx8fHx8",
                     fit: BoxFit.cover,
                   ),
                 ),
                 Padding(
-                    padding: EdgeInsets.only(top: 140, left: 10),
-                    child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white10),
-                            color: Colors.white.withOpacity(0.3),
-                            borderRadius: BorderRadius.circular(7)),
-                        child: Text(
-                          'User Name',
-                          style: TextStyle(fontSize: 25, fontFamily: 'Classic'),
-                        ))),
+                  padding: const EdgeInsets.only(top: 140, left: 10),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white70),
+                        color: Colors.white.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(7)),
+                    child:  Text(
+                        user.email!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 25, fontFamily: 'Classic',letterSpacing: 2),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 270, left: 330),
                   child: IconButton(
@@ -170,7 +179,7 @@ class Settings extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      print('Taped');
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>PrivacyPolicyScreen(),),);
                     },
                     child: const Padding(
                       padding: EdgeInsets.all(10.0),

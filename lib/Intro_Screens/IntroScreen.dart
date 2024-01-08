@@ -20,8 +20,7 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(title: Text("Link"),),
-      body: Stack(
-          children: [
+      body: Stack(children: [
         PageView(
           controller: _controller,
           onPageChanged: (index) {
@@ -36,7 +35,7 @@ class _IntroScreenState extends State<IntroScreen> {
           ],
         ),
         Container(
-            alignment: Alignment(0, 0.8),
+            alignment: Alignment(0, 0.85),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -68,9 +67,10 @@ class _IntroScreenState extends State<IntroScreen> {
                         ),
                       ),
                 SmoothPageIndicator(
-                    controller: _controller,
-                    count: 3,
-                  effect:const WormEffect(),
+                  controller: _controller,
+                  count: 3,
+                  effect: WormEffect(
+                      activeDotColor: Colors.amber.shade200, radius: 6),
                 ),
                 DoneButton
                     ? GestureDetector(
@@ -78,7 +78,7 @@ class _IntroScreenState extends State<IntroScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>const AuthGate()));
+                                  builder: (context) => const AuthGate()));
                         },
                         child: const Text(
                           "Done",
@@ -91,8 +91,9 @@ class _IntroScreenState extends State<IntroScreen> {
                     : GestureDetector(
                         onTap: () {
                           _controller.nextPage(
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.bounceIn);
+                            duration: const Duration(microseconds: 1000),
+                            curve: Curves.easeInOutSine,
+                          );
                         },
                         child: const Text(
                           "Next",

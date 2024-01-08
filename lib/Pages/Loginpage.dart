@@ -100,7 +100,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SquareTile(asset: "asset/Images/google.png",onTap: ()=>AuthService().signInWithGoogle()),
-                SizedBox(width: 20,),
+               const SizedBox(width: 20,),
                 SquareTile(asset: "asset/Images/phone.png",onTap: (){
                   print("Phone");
                 },),

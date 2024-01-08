@@ -55,7 +55,7 @@ class _MessageScreenState extends State<MessageScreen> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(70),
-                        image: DecorationImage(
+                        image:const DecorationImage(
                           image: NetworkImage(
                             'https://w.wallhaven.cc/full/j5/wallhaven-j596qq.jpg',
                           ),
